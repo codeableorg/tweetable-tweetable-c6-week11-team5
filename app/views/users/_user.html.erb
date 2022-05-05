@@ -1,4 +1,23 @@
-<div id="<%= dom_id user %>">
+<div>
+  <div class="w-full center">
+    <h1 class="semibold head-sm">Profile<h1>
+  </div>
+
+  <div class="w-full">
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar%>
+    <% else %>
+      <%= image_tag "user/default_user.jpg"%>
+    <% end %>
+  </div>
+  <div>
+    <h2><%= user.name %></h2>
+    <p><%= user.username %><p>
+    <p><%= user.created_at %></p>
+    <%= link_to "Edit Profile", edit_user_path(user) %>
+  </div>
+
+
   <p>
     <strong>Email:</strong>
     <%= user.email %>

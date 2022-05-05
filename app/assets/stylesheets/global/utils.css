@@ -1,3 +1,11 @@
+.flex {
+  display: flex;
+}
+
+.gap-0\.25 {
+  gap: .25rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -12,6 +20,10 @@
 
 .semibold {
   font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 .overline {
@@ -67,6 +79,14 @@
   color: var(--gray-700)
 }
 
+.gray-800 {
+  color: var(--gray-800)
+}
+
+.gray-900 {
+  color: var(--gray-900)
+}
+
 .mb-0\.5 {
   margin-bottom: 0.5rem;
 }
@@ -95,6 +115,11 @@
   margin: 0rem 0.5rem;
 }
 
+.mx-0\.25 {
+  margin: 0rem 0.25rem;
+}
+
+
 .py-0\.5 {
   padding: 0.5rem 0;
 }
@@ -106,10 +131,7 @@
 .center {
   text-align: center;
 }
+
 .mb-0\.25 {
   margin-bottom: 0.25rem;
-}
-
-.gray {
-  color: #7A7A7A ;
 }
