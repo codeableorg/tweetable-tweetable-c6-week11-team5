@@ -5,7 +5,9 @@ class User < ApplicationRecord
     has_many :likes, dependent: :destroy, inverse_of: "user"
     has_many :liked_tweets, through: :likes, source: :tweet
     enum role: { admin: 0, user: 1 } 
-    
+    #bcrypt
+    has_secure_password
+
     # Validations
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}, allow_blank: false
