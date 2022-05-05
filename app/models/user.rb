@@ -1,8 +1,9 @@
 class User < ApplicationRecord
     has_one_attached :avatar
-    
+
     has_many :tweets, dependent: :nullify
     has_many :likes, dependent: :destroy, inverse_of: "user"
+    has_many :liked_tweets, through: :likes, source: :tweet
     enum role: { admin: 0, user: 1 } 
     
     # Validations

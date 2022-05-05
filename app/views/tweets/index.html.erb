@@ -1,14 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<section class="section-sm">
+  <div class="container-sm">
+    <p style="color: green"><%= notice %></p>
+    <div class="w-full center">
+      <h1 class="semibold head-sm">Home</h1>
+    </div>
 
-<h1>Tweets</h1>
+    <div>
+      <% @tweets.each do |tweet| %>
+        <%= render tweet %>
+      <% end %>
+    </div>
 
-<div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New tweet", new_tweet_path %>
+    <%= link_to "New tweet", new_tweet_path %>
+  </div>
+</section>

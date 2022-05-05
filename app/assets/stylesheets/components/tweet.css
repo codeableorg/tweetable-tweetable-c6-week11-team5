@@ -1,0 +1,42 @@
+.user-avatar img {
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+}   
+
+.tweet-card {
+    background-color: white;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.tweet-card__header {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.tweet-card__body {
+    margin-bottom: 8px;
+}
+
+.tweet-card__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tweet-card__footer-buttons1 {
+    display: flex;
+    gap: 24px;
+}
+
+.tweet-card__footer-buttons2 {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+hr.for-retweets {
+    border: 2px solid var(--gray-300);
+}
