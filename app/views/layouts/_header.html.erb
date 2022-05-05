@@ -1,0 +1,48 @@
+    <header class="header">
+      <!-- bg gray -->
+      <div class="container-lg">
+        <nav class="navbar">
+          <input type="checkbox" id="menu-mobile" />
+
+          <a href="/#" class="text-decoration-none header--menu-mobile">
+            <%= image_tag "icons/logo.png" %>
+          </a>
+
+            <!-- option 1 -->
+            <label for="menu-mobile" id="toggle-close">
+              <i class="ri-close-fill ri-xl"></i>
+            </label>
+
+            <!-- option 2 -->
+            <label for="menu-mobile" id="toggle-open">
+              <i class="ri-menu-line ri-xl"></i>
+            </label>
+
+            
+          <ul class="expandable navbar--links list-style-none">
+            <li>
+              <a href="#" class="link text-sm">Message</a>
+            </li>
+            <li>
+              <%= link_to "Edit profile", "", class: "link text-sm"%>
+            </li>
+            <li>
+              <%= link_to "Games", "", class: "link text-sm" %>
+            </li>
+            <li>
+              <%= link_to "Companies", "", class: "link text-sm" %>
+            </li>
+            <%# if current_user %>
+                <li>
+                    <%= link_to "Logout", "", class: "button text-decoration-none button--secondary", data: {turbo_method: :delete } %>
+                </li>
+            <%# else %>
+                <li>
+                    <%= link_to "Login", "",  class: "button text-decoration-none button--primary"%>
+                </li>
+            <%# end %>
+          </ul>
+
+        </nav>
+      </div>   
+</header>
