@@ -6,6 +6,10 @@
   gap: .25rem;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .w-full {
   width: 100%;
 }
@@ -87,6 +91,10 @@
   color: var(--gray-900)
 }
 
+.mb-0\.25 {
+  margin-bottom: 0.25rem;
+}
+
 .mb-0\.5 {
   margin-bottom: 0.5rem;
 }
@@ -130,8 +138,4 @@
 
 .center {
   text-align: center;
-}
-
-.mb-0\.25 {
-  margin-bottom: 0.25rem;
 }
