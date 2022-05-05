@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 1px 2px 0px #0000000F;
+    box-shadow: 0px 1px 3px 0px #0000001A;
+    margin: auto;
+    min-height: 64px;
+    padding: 0px 16px 0px 16px ;
+}
+
+.navbarbutton {
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1.25px;
+    text-align: center;
+    color: #303036;
+    ;
+}

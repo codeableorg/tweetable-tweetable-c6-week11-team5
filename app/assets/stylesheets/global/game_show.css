@@ -1,0 +1,20 @@
+.gray-100 {
+  background-color: var(--gray-100);
+}
+
+.game-name {
+  color: var(--gray-400)
+}
+
+.padding-16px {
+  padding: 16px 16px;
+}
+
+.image {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.test {
+  width: 100%;
+}
