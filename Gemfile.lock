@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: b78a47e64d79863dfb2a987c84157a8b0de3a037
+  branch: master
+  specs:
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -223,6 +231,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  faker!
   importmap-rails
   pg (~> 1.1)
   puma (~> 5.0)
@@ -232,11 +241,11 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  tzinfo-data
+  tzinfo-data (= 1.2022.1)
   web-console
 
 RUBY VERSION
-   ruby 3.1.1p18
+   ruby 3.1.0p0
 
 BUNDLED WITH
    2.3.12
