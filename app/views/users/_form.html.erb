@@ -11,32 +11,79 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :username, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.text_field :username, class: "input__content", placeholder: "example" %>
+      </div>
+      <% if user.errors.messages[:username].any? %>
+      <span class="content-sm input__error-message">
+        <%= user.errors.messages[:username].join(", ")%>
+      </span>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :email, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.email_field :email, class: "input__content", placeholder: "example@gamil.com" %>
+      </div>
+      <% if user.errors.messages[:email].any? %>
+      <span class="content-sm input__error-message">
+        <%= user.errors.messages[:email].join(", ")%>
+      </span>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :name, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.text_field :name, class: "input__content", placeholder: "Example Name" %>
+      </div>
+      <% if user.errors.messages[:name].any? %>
+      <span class="content-sm input__error-message">
+        <%= user.errors.messages[:name].join(", ")%>
+      </span>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :password_digest, style: "display: block" %>
-    <%= form.text_field :password_digest %>
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :password, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.password_field :password, class: "input__content", placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:password].any? %>
+      <span class="content-sm input__error-message">
+        <%= user.errors.messages[:password].join(", ")%>
+      </span>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.number_field :role %>
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :password_confirmation, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.password_field :password_confirmation, class: "input__content", placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:password_confirmation].any? %>
+      <span class="content-sm input__error-message">
+        <%= user.errors.messages[:password_confirmation].join(", ")%>
+      </span>
+      <% end %>
+    </div>
   </div>
 
+
+
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "button button--primary fit-content" %>
   </div>
 <% end %>
