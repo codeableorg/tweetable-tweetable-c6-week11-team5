@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  resources :tweets
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "tweets#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+
+  resources :tweets
+  resources :users, only: %i[new create]
+
+  #customs routes
+  get "/login", to: "sessions#new"
+  post "/sessions", to: "sessions#create"
+  delete "/sessions", to: "sessions#destroy"
+  get "/profile", to: "users#edit"
+  patch "/profile", to: "users#update"
+  post "/profile", to: "users#create"
 end

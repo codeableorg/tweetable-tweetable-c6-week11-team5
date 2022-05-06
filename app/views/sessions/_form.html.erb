@@ -1,0 +1,23 @@
+<%= form_with(url: sessions_path) do |form| %>
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :email, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.email_field :email, class: "input__content", placeholder: "example@gamil.com" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :password, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.password_field :password, class: "input__content", placeholder: "**********" %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit "SIGN IN" ,class: "button button--primary fit-content" %>
+  </div>
+<% end %>

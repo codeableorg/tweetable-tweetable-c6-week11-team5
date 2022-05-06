@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authenticate_user, only: %i[ show edit update destroy ]
 
   # GET /users
   def index
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -15,8 +16,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /profile
   def edit
+    @user = current_user
   end
 
   # POST /users
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      log_in(@user)
       redirect_to @user, notice: "User was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -32,7 +35,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
+    @user = current_user
+    if current_user.update(user_params)
       redirect_to @user, notice: "User was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -41,15 +45,16 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_url, notice: "User was successfully destroyed."
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+    # def set_user
+    #   @user = User.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def user_params

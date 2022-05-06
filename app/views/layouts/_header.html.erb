@@ -24,7 +24,7 @@
               <a href="#" class="link text-sm">Message</a>
             </li>
             <li>
-              <%= link_to "Edit profile", "", class: "link text-sm"%>
+              <%= link_to "Edit profile","/profile", class: "link text-sm"%>
             </li>
             <li>
               <%= link_to "Games", "", class: "link text-sm" %>
@@ -32,15 +32,15 @@
             <li>
               <%= link_to "Companies", "", class: "link text-sm" %>
             </li>
-            <%# if current_user %>
+            <% if logged_in? %>
                 <li>
-                    <%= link_to "Logout", "", class: "button text-decoration-none button--secondary", data: {turbo_method: :delete } %>
+                    <%= link_to "Logout", sessions_path, class: "button text-decoration-none button--secondary", data: {turbo_method: :delete } %>
                 </li>
-            <%# else %>
+            <% else %>
                 <li>
-                    <%= link_to "Login", "",  class: "button text-decoration-none button--primary"%>
+                    <%= link_to "Login", sessions_path,  class: "button text-decoration-none button--primary", data: {turbo_method: :post } %>
                 </li>
-            <%# end %>
+            <% end %>
           </ul>
 
         </nav>

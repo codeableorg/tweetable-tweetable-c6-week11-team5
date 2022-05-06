@@ -95,8 +95,22 @@
     </div>
   </div>
 
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :current_password, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.password_field :password_confirmation, class: "input__content", placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:password_confirmation].any? %>
+      <span class="content-sm input__error-message">
+        <%= user.errors.messages[:password_confirmation].join(", ")%>
+      </span>
+      <% end %>
+    </div>
+  </div>
+
 
   <div>
-    <%= form.submit "SIGN UP" ,class: "button button--primary fit-content" %>
+    <%= form.submit "UPDATE" ,class: "button button--primary fit-content" %>
   </div>
 <% end %>
