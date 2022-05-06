@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 
   resources :tweets
-  resources :users, only: %i[new create]
+  resources :users
 
   #customs routes
   get "/login", to: "sessions#new"
@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get "/profile", to: "users#edit"
   patch "/profile", to: "users#update"
   post "/profile", to: "users#create"
+
+   # Omniauth
+   get "/auth/github/callback", to: "sessions#create"
 end

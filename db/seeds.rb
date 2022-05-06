@@ -4,10 +4,13 @@ Like.destroy_all
 Tweet.destroy_all
 User.destroy_all
 
+puts "Custom user"
+User.create(email: "test@gmail.com", username: "testUser", name: "testdev",password:"qwerty", password_confirmation: "qwerty")
 
 puts "Seeding users"
-50.times do
-    user = User.new(email: Faker::Internet.email, username: Faker::Internet.username, name: Faker::Name.name, role: :user)
+10.times do
+    temporal_password = Faker::Internet.password
+    user = User.new(email: Faker::Internet.email, username: Faker::Internet.username, name: Faker::Name.name, role: :user, password: temporal_password, password_confirmation: temporal_password)
     if user.valid?
         user.save
     else
@@ -16,7 +19,7 @@ puts "Seeding users"
 end
 
 puts "Seeding tweets"
-100.times do
+5.times do
     tweet = Tweet.new(user: User.all.sample, body: Faker::Hipster.paragraph_by_chars(characters: 139) )
     if tweet.valid?
         tweet.save
@@ -27,7 +30,7 @@ end
 
 puts "Seeding retweets"
 created_tweets = Tweet.all
-200.times do
+10.times do
     retweet = Tweet.new(user: User.all.sample, body: Faker::Hipster.paragraph_by_chars(characters: 139), replied_to: created_tweets.sample )
     if retweet.valid?
         retweet.save

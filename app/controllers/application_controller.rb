@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper_method %i[current_user log_in? logged_in? logout]
+  before_action :authenticate_user, except: %i[index show]
+  helper_method %i[current_user logged_in? logout]
   
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]

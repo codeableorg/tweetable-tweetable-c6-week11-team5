@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user, only: %i[new create]
 
   # GET /users
   def index
@@ -51,11 +51,6 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_user
-    #   @user = User.find(params[:id])
-    # end
-
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:email, :username, :name, :password, :password_confirmation)
