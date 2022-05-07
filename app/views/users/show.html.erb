@@ -1,7 +1,7 @@
 <section class="section-sm">
   <div class="container-sm">
     <p style="color: green"><%= notice %></p>
-    <%= render @user %>
+    <%= render @user, like_new: @like_new%>
 
     <div>
       <%= link_to "Edit this user", edit_user_path(@user) %> |

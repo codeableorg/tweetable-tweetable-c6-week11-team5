@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root "tweets#index"
 
-
   resources :tweets
   resources :users
-
+  resources :likes, only: %i[create]
+  
   #customs routes
   get "/login", to: "sessions#new"
   post "/sessions", to: "sessions#create"

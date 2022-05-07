@@ -29,6 +29,11 @@
 /* Base button - END */
 
 /* Button default - START */
+.button-cleaned {
+  cursor: pointer;
+  background-color: #ffffff00;
+  border: none;
+}
 
 .button--default {
   background-color: var(--gray-200);
