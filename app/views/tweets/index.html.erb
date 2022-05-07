@@ -1,17 +1,19 @@
 <section class="section-sm">
   <div class="container-sm">
     <p style="color: green"><%= notice %></p>
-    <div class="w-full center">
+    <div class="w-full center mb-1">
       <h1 class="semibold head-sm">Home</h1>
     </div>
 
     <div>
-      <%= render comment %>
+      <%= render "comment", tweet_new: @tweet_new, parent_tweet: nil %>
     </div>
 
     <div>
       <% @tweets.each do |tweet| %>
-        <%= render tweet %>
+        <% if tweet.replied_to.nil? %>
+          <%= render tweet, like_new: @like_new %>
+        <% end %>
       <% end %>
     </div>
 

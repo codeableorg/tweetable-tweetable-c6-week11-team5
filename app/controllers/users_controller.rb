@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @like_new = Like.new
   end
 
   # GET /users/new

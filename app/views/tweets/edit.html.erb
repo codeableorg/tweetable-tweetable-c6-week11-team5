@@ -1,10 +1,19 @@
-<h1>Editing tweet</h1>
+<section class="section-sm">
+  <div class="container-sm">
+    <div class="w-full center mb-1">
+      <h1 class="semibold head-sm">Editing tweet</h1>
+    </div>
+    
+    <div>
+      <%= render "form", tweet: @tweet %>
+    </div>
 
-<%= render "form", tweet: @tweet %>
+    <br>
 
-<br>
+    <div>
+      <%= link_to "Show this tweet", @tweet %> |
+      <%= link_to "Back to tweets", tweets_path %>
+    </div>
 
-<div>
-  <%= link_to "Show this tweet", @tweet %> |
-  <%= link_to "Back to tweets", tweets_path %>
-</div>
+  </div>
+</section>
