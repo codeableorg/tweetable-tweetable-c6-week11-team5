@@ -13,16 +13,20 @@ Like.destroy_all
 Tweet.destroy_all
 User.destroy_all
 
+puts "Seeding custom user"
+User.create(email: "test@gmail.com", username: "testUser", name: "testdev",password:"qwerty", password_confirmation: "qwerty")
 puts "Seeding with -#{ current_config.to_s }- configuration... (Change at seeds.rb) "
 puts "Seeding #{general_config[current_config][:users]} users"
 general_config[current_config][:users].times do
-    user = User.new(email: Faker::Internet.email, username: Faker::Internet.username, name: Faker::Name.name, role: :user)
+    temporal_password = Faker::Internet.password
+    user = User.new(email: Faker::Internet.email, username: Faker::Internet.username, name: Faker::Name.name, role: :user, password: temporal_password, password_confirmation: temporal_password)
     if user.valid?
         user.save
     else
         p user.errors.full_messages
     end
 end
+
 
 puts "Seeding #{general_config[current_config][:tweets]} tweets"
 general_config[current_config][:tweets].times do

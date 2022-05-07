@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  root "tweets#index"
+
   resources :tweets
   resources :users
   resources :likes, only: %i[create]
-  root "tweets#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  #customs routes
+  get "/login", to: "sessions#new"
+  post "/sessions", to: "sessions#create"
+  delete "/sessions", to: "sessions#destroy"
+  get "/profile", to: "users#edit"
+  patch "/profile", to: "users#update"
+  post "/profile", to: "users#create"
 
-  # Defines the root path route ("/")
+   # Omniauth
+   get "/auth/github/callback", to: "sessions#create"
 end

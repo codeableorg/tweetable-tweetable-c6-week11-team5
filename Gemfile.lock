@@ -1,3 +1,20 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: b78a47e64d79863dfb2a987c84157a8b0de3a037
+  branch: master
+  specs:
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
+
+GIT
+  remote: https://github.com/omniauth/omniauth-github.git
+  revision: 1f772263c6cc00e84dabbc02beb755ba4c95f7d1
+  branch: master
+  specs:
+    omniauth-github (2.0.0)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,6 +84,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     ast (2.4.2)
+    bcrypt (3.1.17)
+    bcrypt (3.1.17-java)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
@@ -78,9 +97,18 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     digest (3.1.0-java)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
+    faraday (2.2.0)
+      faraday-net_http (~> 2.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (2.0.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashie (5.0.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.0.3)
@@ -89,6 +117,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    jwt (2.3.0)
     loofah (2.17.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -101,6 +130,8 @@ GEM
     minitest (5.15.0)
     msgpack (1.5.1)
     msgpack (1.5.1-java)
+    multi_json (1.15.0)
+    multi_xml (0.6.0)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -120,6 +151,22 @@ GEM
     nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    oauth2 (1.4.9)
+      faraday (>= 0.17.3, < 3.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (2.1.0)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    omniauth-oauth2 (1.7.2)
+      oauth2 (~> 1.4)
+      omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.1)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -131,6 +178,8 @@ GEM
     racc (1.6.0)
     racc (1.6.0-java)
     rack (2.2.3)
+    rack-protection (2.2.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.2.4)
@@ -181,6 +230,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -221,9 +271,14 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   debug
+  dotenv-rails
+  faker!
   importmap-rails
+  omniauth-github!
+  omniauth-rails_csrf_protection
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.2.4)
@@ -232,11 +287,11 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  tzinfo-data
+  tzinfo-data (= 1.2022.1)
   web-console
 
 RUBY VERSION
-   ruby 3.1.1p18
+   ruby 3.1.0p0
 
 BUNDLED WITH
    2.3.12

@@ -28,8 +28,7 @@ class TweetsController < ApplicationController
   def create
     # binding.pry
     @tweet = Tweet.new(tweet_params)
-    @tweet.user = User.all.sample # Agregar aqui el current_user que está logeado
-
+    @tweet.user = current_user
     if @tweet.save
       if params[:tweet][:replied_to_id].empty? # Si no hay un replied hablamos de un tweet
         redirect_to tweets_path, notice: "Tweet was successfully created."
