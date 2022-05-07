@@ -3,9 +3,11 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all
     @tweet_new = Tweet.new
     @like_new = Like.new
+    @tweets = Tweet.all
+    @user_tweets = current_user ? current_user.tweets : []
+    @user_likes = current_user ? current_user.liked_tweets : []
   end
 
   # GET /tweets/1
@@ -13,6 +15,8 @@ class TweetsController < ApplicationController
     #  @tweet -> Default
     @tweet_new = Tweet.new
     @like_new = Like.new
+    @user_tweets = current_user ? current_user.tweets : []
+    @user_likes = current_user ? current_user.liked_tweets : []
   end
 
   # GET /tweets/new

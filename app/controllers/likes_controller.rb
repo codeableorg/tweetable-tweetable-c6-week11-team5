@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
     def create;
         @like = Like.new(like_params)
-        @like.user = User.all.sample
+        @like.user = current_user
 
         if @like.save
             redirect_to(request.referrer || root_path )

@@ -13,14 +13,13 @@
 
   <div class="flex gap-4 mb-2">
     <div class="input">
-      <%= form.label :username, class:"content-xs overline"%>
-      <div class="input__container">
-        <%= form.text_field :username, class: "input__content", placeholder: "example" %>
-      </div>
+      <%= form.label :username, class: "input text-xs overline"%>
+      <%= form.text_field :username, class: "input__content", placeholder: "example" %>
+      
       <% if user.errors.messages[:username].any? %>
-      <span class="content-sm input__error-message">
-        <%= user.errors.messages[:username].join(", ")%>
-      </span>
+        <span class="content-sm input__error-message">
+          <%= user.errors.messages[:username].join(", ")%>
+        </span>
       <% end %>
     </div>
   </div>

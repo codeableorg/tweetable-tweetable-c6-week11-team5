@@ -8,8 +8,10 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @user = User.find(params[:id])
     @like_new = Like.new
+    @user = User.find(params[:id])
+    @user_tweets = current_user ? current_user.tweets : []
+    @user_likes = current_user ? current_user.liked_tweets : []
   end
 
   # GET /users/new

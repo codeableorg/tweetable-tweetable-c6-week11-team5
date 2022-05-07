@@ -1,17 +1,19 @@
 <section class="section-sm">
   <div class="container-sm">
     <p style="color: green"><%= notice %></p>
-    <%= render @tweet, like_new: @like_new %>
+    <%= render @tweet, like_new: @like_new, user_tweets: @user_tweets, user_likes: @user_likes %>
 
     <hr class="for-retweets">
 
-    <div>
-      <%= render "comment", tweet_new: @tweet_new, parent_tweet: @tweet %>
-    </div>
+    <% if current_user %>
+      <div>
+        <%= render "comment", tweet_new: @tweet_new, parent_tweet: @tweet %>
+      </div>
+    <% end %>
 
     <div>
       <% @tweet.tweets.each do |retweet| %>
-        <%= render retweet, like_new: @like_new %>
+        <%= render retweet, like_new: @like_new, user_tweets: @user_tweets, user_likes: @user_likes %>
       <% end %>
     </div>
   </div>

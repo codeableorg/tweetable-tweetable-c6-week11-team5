@@ -37,13 +37,13 @@
   <!-- User tweets -->
   <div class="expandable-tweets">
     <% user.tweets.each do |tweet| %>
-      <%= render "/tweets/tweet", tweet: tweet, like_new: like_new %>
+      <%= render "/tweets/tweet", tweet: tweet, like_new: like_new, user_tweets: user_tweets, user_likes: user_likes %>
       <% end %>
   </div>
   <!-- User liked tweets -->
   <div class="expandable-liked-tweets">
     <% user.liked_tweets.each do |tweet|%>
-      <%= render "/tweets/tweet", tweet: tweet, like_new: like_new %>
+      <%= render "/tweets/tweet", tweet: tweet, like_new: like_new, user_tweets: user_tweets, user_likes: user_likes %>
     <% end %>
   </div>
 

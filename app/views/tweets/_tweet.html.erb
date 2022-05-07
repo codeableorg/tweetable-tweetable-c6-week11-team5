@@ -23,14 +23,18 @@
     </div>
   <% end %>
   <div class="tweet-card__footer"> <!--Footer -->
+    
     <div class="tweet-card__footer-buttons1"> <!-- First two buttons -->
-      <%= button_to tweet, method: :delete, class: "button-cleaned" do %>
-        <%= image_tag "icons/erase.png" %>
-      <% end %>
-      <%= button_to  edit_tweet_path(tweet), method: :get, class: "button-cleaned" do %>
-        <%= image_tag "icons/edit.png" %>
+      <% if user_tweets.include?(tweet) %>
+        <%= button_to tweet, method: :delete, class: "button-cleaned" do %>
+          <%= image_tag "icons/erase.png" %>
+        <% end %>
+        <%= button_to  edit_tweet_path(tweet), method: :get, class: "button-cleaned" do %>
+          <%= image_tag "icons/edit.png" %>
+        <% end %>
       <% end %>
     </div>
+
     <div class="tweet-card__footer-buttons2"> <!-- Last two buttons -->
       
       <%= link_to tweet do %>
@@ -40,7 +44,12 @@
 
       <%= form_with url: likes_path, model: like_new do |form| %>
         <%= form.hidden_field :tweet_id, value: tweet.id %>
-        <%= image_submit_tag "icons/like.png" %>
+        
+        <%if user_likes.include?(tweet) %>
+          <%= image_submit_tag "icons/liked.png" %>
+        <% else %>
+          <%= image_submit_tag "icons/like.png" %>
+        <% end %>
       <% end %>
       <p><%= tweet.likes_count %></p>
     </div>
