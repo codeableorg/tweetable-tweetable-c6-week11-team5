@@ -13,7 +13,11 @@
   gap: 0.5em;
   justify-content: center;
   align-items: center;
-  max-width: 150px;
+}
+
+.button--xs {
+  font-size: 0.75rem;
+  padding: 6px 10px;
 }
 
 .button--sm {

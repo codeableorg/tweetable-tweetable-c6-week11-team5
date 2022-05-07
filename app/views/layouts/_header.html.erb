@@ -20,33 +20,17 @@
 
             
           <ul class="expandable navbar--links list-style-none">
-            <li>
-              <a href="#" class="link text-sm">Message</a>
-            </li>
-            <li>
-              <%= link_to "Games", "", class: "link text-sm" %>
-            </li>
-            <li>
-              <%= link_to "Companies", "", class: "link text-sm" %>
-            </li>
             <% if logged_in? %>
                 <li>
                    <%= link_to "Edit profile","/profile", class: "link text-sm"%>
                 </li>
                 <li>
-                    <%= link_to "Logout", sessions_path, class: "button text-decoration-none button--secondary", data: {turbo_method: :delete } %>
+                    <%= link_to "Logout", sessions_path, class: "text-decoration-none button button--xs button--secondary", data: {turbo_method: :delete } %>
                 </li>
             <% else %>
                 <li>
                     <%= link_to "Login", sessions_path,  class: "button text-decoration-none button--primary", data: {turbo_method: :post } %>
                 </li>
-
-                <div data-turbo="false">
-                  <%=form_with(url: "/auth/github", method: :post) do |f|%>
-                  <%=f.submit "Login with github"%>
-                  <%end%>
-               </div>
-
             <% end %>
           </ul>
 
