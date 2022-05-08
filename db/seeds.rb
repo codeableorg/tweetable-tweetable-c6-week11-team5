@@ -13,8 +13,13 @@ Like.destroy_all
 Tweet.destroy_all
 User.destroy_all
 
-puts "Seeding custom user"
-User.create(email: "test@gmail.com", username: "testUser", name: "testdev",password:"qwerty", password_confirmation: "qwerty")
+puts "Seeding custom admin -> admin@gmail.com - supersecret"
+User.create(email: "admin@gmail.com", username: "elBossAdmin", name: "admin", password: "supersecret", password_confirmation: "supersecret")
+sleep(1.5)
+puts "Seeding custom user -> user@gmail.com - qwerty "
+User.create(email: "user@gmail.com", username: "elUser", name: "user", role: :user, password:"qwerty", password_confirmation: "qwerty")
+sleep(1.5)
+
 puts "Seeding with -#{ current_config.to_s }- configuration... (Change at seeds.rb) "
 puts "Seeding #{general_config[current_config][:users]} users"
 general_config[current_config][:users].times do

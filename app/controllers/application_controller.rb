@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   before_action :authenticate_user, except: %i[index show]
   helper_method %i[current_user logged_in? logout]
   
