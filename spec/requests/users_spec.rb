@@ -59,8 +59,8 @@ describe "Users", type: :request do
                                        }
 
         error = JSON.parse(response.body)
-        error["username"]
-        error["email"]
+        p error["username"]
+        p error["email"]
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(error["username"]).to include("has already been taken")
