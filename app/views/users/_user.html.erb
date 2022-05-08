@@ -1,0 +1,52 @@
+<div>
+  <div class="w-full center mb-1">
+    <h1 class="semibold head-sm">Profile<h1>
+  </div>
+
+  <div class="user-main-image">
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar%>
+    <% else %>
+      <%= image_tag "user/default_user.jpg"%>
+    <% end %>
+  </div>
+  <div class="w-full center mb-1.5">
+    <h2 class="semibold head-xs mb-0.25"><%= user.name %></h2>
+    <p class="font-primary regular text-md gray-500 mb-0.25"><%= user.username %><p>
+    <p class="font-primary regular text-md gray-500 mb-1"><%= user.created_at.strftime("Joined on %B %d, %Y") %></p>
+    <% if current_user and (current_user.admin? or  current_user == user) %>
+      <div class="flex justify-center">
+        <%= link_to "Edit Profile", edit_user_path(user), class: "button user-button-create button--primary"%>
+      </div>
+    <% end %>
+  </div>
+
+  <input type="radio" id="c-tweets" name="selection" checked/>
+  <input type="radio" id="c-liked-tweets" name="selection"/>
+
+  <div class="tabs">
+    <div class="tabs-element-tweets">
+      <label for="c-tweets" id="toggle-tweets">
+        <h3 class="font-primary regular text-md">Tweets (<%= user.tweets.length%>)</h3>
+      </label>
+    </div>
+    <div class="tabs-element-liked-tweets">
+      <label for="c-liked-tweets" id="toggle-liked-tweets">
+        <h3 class="font-primary regular text-md">Likes (<%= user.liked_tweets.length%>)</h3>
+      </label>
+    </div>
+  </div>
+  <!-- User tweets -->
+  <div class="expandable-tweets">
+    <% user.tweets.each do |tweet| %>
+      <%= render "/tweets/tweet", tweet: tweet, like_new: like_new, user_tweets: user_tweets, user_likes: user_likes %>
+      <% end %>
+  </div>
+  <!-- User liked tweets -->
+  <div class="expandable-liked-tweets">
+    <% user.liked_tweets.each do |tweet|%>
+      <%= render "/tweets/tweet", tweet: tweet, like_new: like_new, user_tweets: user_tweets, user_likes: user_likes %>
+    <% end %>
+  </div>
+
+</div>

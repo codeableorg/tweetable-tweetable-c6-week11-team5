@@ -1,0 +1,110 @@
+<%= form_with(model: user) do |form| %>
+  <div class="user--form">
+    <% if user.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-1">
+        <div>
+          <%= form.label :username, class:"text-xs overline block"%>
+          <%= form.text_field :username, class: "input", placeholder: "example" %>
+        </div>
+        <% if user.errors.messages[:username].any? %>
+          <span class="content-sm input__error-message block">
+            <%= user.errors.messages[:username].join(", ")%>
+          </span>
+        <% end %>
+    </div>
+
+    <div class="mb-1">
+      <div>
+        <%= form.label :email, class:"text-xs overline block"%>
+        <%= form.email_field :email, class: "input", placeholder: "example@gamil.com" %>
+      </div>
+      <% if user.errors.messages[:email].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:email].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="mb-1">
+      <div>
+        <%= form.label :name, class:"text-xs overline"%>
+        <%= form.text_field :name, class: "input", placeholder: "Example Name" %>
+      </div>
+      <% if user.errors.messages[:name].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:name].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="mb-1">
+      <div class="user-main-image">
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar %>
+          <% else %>
+            <%= image_tag "user/default_user.jpg"%>
+          <% end %>
+      </div>
+      <div>
+        <%= form.label :avatar, class:"text-xs overline"%>
+        <%= form.file_field :avatar, class: "input", placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:avatar].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:avatar].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="mb-1">
+      <div>
+        <%= form.label :password, class:"text-xs overline"%>
+        <%= form.password_field :password, class: "input", placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:password].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:password].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="mb-1">
+      <div>
+        <%= form.label :password_confirmation, class: "text-xs overline"%>
+        <%= form.password_field :password_confirmation, class: "input", placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:password_confirmation].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:password_confirmation].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="mb-1">
+      <div>
+        <%= form.label :current_password, class:"text-xs overline"%>
+        <%= form.password_field :password_confirmation, class: "input", placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:password_confirmation].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:password_confirmation].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="w-full">
+      <%= form.submit "UPDATE", class: "w-full button button--primary" %>
+    </div>
+  </div>
+<% end %>

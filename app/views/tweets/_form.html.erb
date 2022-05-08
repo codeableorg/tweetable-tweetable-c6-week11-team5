@@ -1,0 +1,17 @@
+<%= form_with(model: tweet) do |form| %>
+  <div class="tweet-new">
+    <% if tweet.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+        <ul>
+          <% tweet.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+      <%= form.text_area :body, placeholder: "Remember to thing before write...", rows: 3, class: "tweet-body w-full"%>
+      <%= form.submit "Update", class: "button button--primary overline"%>
+  </div>
+<% end %>

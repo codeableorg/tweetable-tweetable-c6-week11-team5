@@ -10,7 +10,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="body">
+     <%= render "layouts/header"%>
+     <div class="body-content"><!-- body-->
+      <p> <%= flash[:message]%> </p>
+      <%= yield %>
+    </div>
+    <%= render "layouts/footer"%>
   </body>
 </html>

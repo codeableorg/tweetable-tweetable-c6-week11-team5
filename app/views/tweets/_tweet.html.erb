@@ -1,0 +1,57 @@
+<div class="tweet-card">
+  <div class="tweet-card__header"> <!-- Header -->
+    <div class="user-avatar">
+      <% if tweet.user.avatar.attached? %>
+        <%= image_tag tweet.user.avatar %>
+      <% else %>
+        <%=  image_tag "user/default_user.jpg"%>
+      <% end %>
+    </div>
+    <%= link_to tweet.user, class: "text-decoration-none gray-900" do%>
+      <div class="mx-0.25">
+        <div class="flex gap-0.25">
+          <h2 class="font-primary bold text-md"><%= tweet.user.name%></h2>
+          <h2 class="font-primary regular text-md pink-600">@<%= tweet.user.username%></h2>
+        </div>
+         <p class="font-primary regular text-sm gray-500"><%= time_ago_in_words(tweet.created_at)%> ago</p>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to tweet, class: "text-decoration-none gray-900" do %>
+    <div class="tweet-card__body"> <!-- Body -->
+        <p class="font-primary regular text-md"><%= tweet.body %></p>
+    </div>
+  <% end %>
+  <div class="tweet-card__footer"> <!--Footer -->
+    
+    <div class="tweet-card__footer-buttons1"> <!-- First two buttons -->
+      <% if user_tweets.include?(tweet) %>
+        <%= button_to tweet, method: :delete, class: "button-cleaned" do %>
+          <%= image_tag "icons/erase.png" %>
+        <% end %>
+        <%= button_to  edit_tweet_path(tweet), method: :get, class: "button-cleaned" do %>
+          <%= image_tag "icons/edit.png" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="tweet-card__footer-buttons2"> <!-- Last two buttons -->
+      
+      <%= link_to tweet do %>
+        <%= image_tag "icons/retweet.png" %>
+      <% end %>
+      <p><%= tweet.replies_count %></p>
+
+      <%= form_with url: likes_path, model: like_new do |form| %>
+        <%= form.hidden_field :tweet_id, value: tweet.id %>
+        
+        <%if user_likes.include?(tweet) %>
+          <%= image_submit_tag "icons/liked.png" %>
+        <% else %>
+          <%= image_submit_tag "icons/like.png" %>
+        <% end %>
+      <% end %>
+      <p><%= tweet.likes_count %></p>
+    </div>
+  </div>
+</div>

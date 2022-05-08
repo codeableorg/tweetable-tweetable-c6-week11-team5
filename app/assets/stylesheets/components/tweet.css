@@ -1,0 +1,71 @@
+.user-avatar img {
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+}   
+
+.tweet-new {
+    background-color: white;
+    padding: 4px 8px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.tweet-body {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.tweet-body::placeholder {
+    color: var(--gray-300);
+}
+
+.tweet-body:focus {
+    outline: none;
+    border: none;
+}
+
+
+.tweet-card {
+    background-color: white;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.tweet-card__header {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.tweet-card__body {
+    margin-bottom: 8px;
+}
+
+.tweet-card__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tweet-card__footer-buttons1 {
+    display: flex;
+    gap: 24px;
+}
+
+.tweet-card__footer-buttons2 {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+hr.for-retweets {
+    border: 2px solid var(--gray-300);
+}

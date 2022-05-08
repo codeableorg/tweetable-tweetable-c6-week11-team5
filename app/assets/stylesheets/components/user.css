@@ -1,0 +1,70 @@
+.user--form {
+    padding: 24px 16px;
+    background-color: white;
+}
+
+.user-main-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.user-main-image img {
+    height: 96px;
+    width: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-button-create {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.25px;
+}
+
+
+/* User tabs */
+.tabs {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 16px;
+}
+
+.tabs-element-tweets {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.tabs-element-liked-tweets {
+    text-align: center;
+    padding: 8px 0;
+}
+
+
+#c-tweets, 
+#c-liked-tweets, 
+.expandable-tweets,
+.expandable-liked-tweets {
+    display: none;
+}
+
+#c-tweets:checked ~ .expandable-tweets {
+    display: block;
+}
+
+#c-liked-tweets:checked ~ .expandable-liked-tweets {
+    display: block;
+}
+
+#c-tweets:checked ~ .tabs .tabs-element-tweets {
+    border-bottom: 3px solid var(--pink-600);
+}
+
+#c-liked-tweets:checked ~ .tabs .tabs-element-liked-tweets {
+    border-bottom: 3px solid var(--pink-600);
+}
