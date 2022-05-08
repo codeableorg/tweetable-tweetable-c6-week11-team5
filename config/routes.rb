@@ -15,4 +15,10 @@ Rails.application.routes.draw do
 
    # Omniauth
    get "/auth/github/callback", to: "sessions#create"
+
+  #routes to API tests
+  namespace :api do
+    resources :tweets, only: %i[index show]
+    resources :users, only: %i[index show]
+  end
 end
