@@ -48,6 +48,25 @@ describe "Users", type: :request do
       expect(response).to have_http_status(:created)
     end
 
+    it "respond with error when username or email already been takens" do
+      User.create(email: "test@gmail.com", username: "test123", name: "test123", password: "qwerty")
+      
+      post "/api/users" , params: { user: { email: "test@gmail.com", 
+                                         name:"test123",
+                                         username:"test123", 
+                                         password:"qwerty", 
+                                         password_confirmation:"qwerty"} 
+                                       }
+
+        error = JSON.parse(response.body)
+        error["username"]
+        error["email"]
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(error["username"]).to include("has already been taken")
+        expect(error["email"]).to include("has already been taken")
+     end
+
   end
 
   
