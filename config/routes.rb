@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   #routes to API tests
   namespace :api do
-    resources :tweets, only: %i[index show]
-    resources :users, only: %i[index show]
+    resources :tweets, except: %i[new edit]
+    resources :users, except: %i[new edit]
   end
 end

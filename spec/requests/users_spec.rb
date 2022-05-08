@@ -38,44 +38,17 @@ describe "Users", type: :request do
     
   end
 
-  # describe "new path" do
-  #   it "respond with http success status code" do
-  #     user = User.create(email: "test123@gmail.com", username: "test123", name: "test123", password: "test123")
-  #     get api_user_path(user)
-  #     expect(response).to have_http_status(:ok)
-  #   end
+  describe "create path" do
+    it "respond with http created" do
+     post "/api/users" , params: { user: { email: "test@gmail.com", 
+                                        name:"test123",
+                                        username:"test123", 
+                                        password:"qwerty", password_confirmation:"qwerty" } 
+                                      }
+      expect(response).to have_http_status(:created)
+    end
 
-  # end
+  end
 
-  # describe "edit path" do
-  #   it "respond with http success status code" do
-  #     user = User.create(email: "test123@gmail.com", username: "test123", name: "test123", password: "test123")
-  #     get api_user_path(user)
-  #     expect(response).to have_http_status(:ok)
-  #   end
-  # end
-
-  # describe "create path" do
-  #   it "respond with http success status code" do
-  #     user = User.create(email: "test123@gmail.com", username: "test123", name: "test123", password: "test123")
-  #     get api_user_path(user)
-  #     expect(response).to have_http_status(:ok)
-  #   end
-  # end
-
-  # describe "update path" do
-  #   it "respond with http success status code" do
-  #     user = User.create(email: "test123@gmail.com", username: "test123", name: "test123", password: "test123")
-  #     get api_user_path(user)
-  #     expect(response).to have_http_status(:ok)
-  #   end
-  # end
-
-  # describe "destroy path" do
-  #   it "respond with http success status code" do
-  #     user = User.create(email: "test123@gmail.com", username: "test123", name: "test123", password: "test123")
-  #     get api_user_path(user)
-  #     expect(response).to have_http_status(:ok)
-  #   end
-  # end
+  
 end
