@@ -12,7 +12,7 @@
     <% end %>
 
     <div>
-      <% @tweets.each do |tweet| %>
+      <% @tweets.sort.reverse.each do |tweet| %>
         <% if tweet.replied_to.nil? %>
           <%= render tweet, like_new: @like_new, user_tweets: @user_tweets, user_likes: @user_likes %>
         <% end %>
