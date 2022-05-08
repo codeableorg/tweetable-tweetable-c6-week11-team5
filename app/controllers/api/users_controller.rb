@@ -1,5 +1,6 @@
 module Api
     class UsersController < ApiController
+       # GET api/users
       def index
         @users = User.all
         render json: @users, status: :ok
@@ -11,6 +12,7 @@ module Api
         render json: @user, status: :ok
       end
 
+      # POST api/users
       def create
         @user = User.new(user_params)
     
@@ -20,6 +22,14 @@ module Api
             render json: @user.errors , status: :unprocessable_entity
         end
       end
+
+      # DELETE api/users/1
+      def destroy
+          @user = User.find(params[:id])
+          @user.destroy
+          render json: {}, status: :no_content
+      end
+
 
       private
         def user_params

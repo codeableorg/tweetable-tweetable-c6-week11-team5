@@ -39,7 +39,7 @@ describe "Users", type: :request do
   end
 
   describe "create path" do
-    it "respond with http created" do
+    it "respond with user created" do
      post "/api/users" , params: { user: { email: "test@gmail.com", 
                                         name:"test123",
                                         username:"test123", 
@@ -66,8 +66,14 @@ describe "Users", type: :request do
         expect(error["username"]).to include("has already been taken")
         expect(error["email"]).to include("has already been taken")
      end
-
   end
 
-  
+  # describe "destroy path" do
+  #   it "respond with user was destroyed" do
+  #     @user = User.find(params[:id])
+  #     @user.destroy
+  #     delete api_user_path(@user)
+  #     expect(response).to have_http_status(:no_content)
+  #   end
+  # end
 end
