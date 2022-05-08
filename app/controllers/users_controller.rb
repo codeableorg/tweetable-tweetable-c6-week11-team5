@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user, only: %i[new create]
+  skip_before_action :authenticate_user, only: %i[new create edit]
+  after_action :verify_authorized, only: %i[update]
 
   # GET /users
   def index
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @like_new = Like.new
     @user = User.find(params[:id])
-    @user_tweets = current_user ? current_user.tweets : []
+    @user_tweets = policy_scope( Tweet )
     @user_likes = current_user ? current_user.liked_tweets : []
   end
 
@@ -21,7 +22,11 @@ class UsersController < ApplicationController
 
   # GET /profile
   def edit
-    @user = current_user
+    if params.has_key?(:id)
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
   end
 
   # POST /users
@@ -38,8 +43,10 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    @user = current_user
-    if current_user.update(user_params)
+    @user = User.find(params[:id])
+    authorize @user
+
+    if @user.update(user_params)
       redirect_to @user, notice: "User was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -56,6 +63,6 @@ class UsersController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :username, :name, :password, :password_confirmation)
+      params.require(:user).permit(:email, :username, :name, :password, :password_confirmation, :avatar)
     end
 end

@@ -1,23 +1,31 @@
 <%= form_with(url: sessions_path) do |form| %>
-  <div class="flex gap-4 mb-2">
-    <div class="input">
-      <%= form.label :email, class:"content-xs overline"%>
-      <div class="input__container">
-        <%= form.email_field :email, class: "input__content", placeholder: "example@gamil.com" %>
+  <div class="user--form">
+    <div class="center">
+      <p class="mb-1 text-xs overline">Continue with</p>
+      <div data-turbo="false" class="mb-1">
+        <%=form_with(url: "/auth/github", method: :post) do |f|%>
+          <%=f.submit "Login with github", class: "w-full button button--secondary mb-1"%>
+        <%end%>
       </div>
+      <p class="mb-1 text-xs overline">Or</p>
     </div>
-  </div>
 
-  <div class="flex gap-4 mb-2">
-    <div class="input">
-      <%= form.label :password, class:"content-xs overline"%>
-      <div class="input__container">
-        <%= form.password_field :password, class: "input__content", placeholder: "**********" %>
-      </div>
+    <div class="mb-1">
+      <%= form.label :email, class:"text-xs overline block"%>
+      <%= form.email_field :email, class: "input", placeholder: "example@gamil.com" %>
     </div>
-  </div>
 
-  <div>
-    <%= form.submit "SIGN IN" ,class: "button button--primary fit-content" %>
+    <div class="mb-1">
+      <%= form.label :password, class:"text-xs overline block"%>
+      <%= form.password_field :password, class: "input", placeholder: "**********" %>
+    </div>
+
+    <div class="center">
+      <%= form.submit "SIGN IN" ,class: "w-full button button--primary mb-1" %>
+
+      <p class="mb-1">Don’t have an account?</p>
+      <%= link_to "Create an account", new_user_path, class: "text-decoration-none pink-600" %>
+    </div>
+
   </div>
 <% end %>
